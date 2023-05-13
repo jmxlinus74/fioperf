@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  fiolab:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+      args:
+        # On Linux, you may need to update USER_UID and USER_GID below if not your local UID is not 1000.
+        USER_UID: 1000
+        USER_GID: 1000
+    init: true
+    hostname: vscode-svr
+    volumes:
+      # Update this to wherever you want VS Code to mount the folder of your project
+      - ..:/workspace:cached
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro    
+    command: 
+      - bash 
+      - -c 
+      - |        
+        sleep infinity
+    

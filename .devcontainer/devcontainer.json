@@ -1,0 +1,32 @@
+{
+	"name": "FIO Devlab",
+	"dockerComposeFile": "docker-compose.yml",	
+	"service": "fiolab",
+	"workspaceFolder": "/workspace",
+	
+	// Set *default* container specific settings.json values on container create.
+	"settings": { 
+		"terminal.integrated.shell.linux": "/bin/bash"
+	},
+
+	// Add the IDs of extensions you want installed when the container is created.
+	"extensions": [
+		"ms-python.python",
+		"donjayamanne.python-environment-manager",
+		"magicstack.magicpython",
+		"buenon.scratchpads"
+	],
+	
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	"forwardPorts": [8080, 3250, 3000, 4210],
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	"postCreateCommand": ".devcontainer/post-install.sh",
+
+	// Uncomment to connect as a non-root user. See https://aka.ms/vscode-remote/containers/non-root.
+	"remoteUser": "vscode",
+
+	"runArgs": [
+		"--network=host"
+	]
+}
